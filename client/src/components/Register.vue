@@ -2,34 +2,28 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card class="mx-20 my-15" elevation="2" tile>
-          <v-toolbar color="green darken-1" flat dense dark>
-            <v-toolbar-title>Register</v-toolbar-title>
-          </v-toolbar>
+        <panel title="Register" class="mx-20 my-15">
+          <v-text-field
+            label="Email"
+            v-model="email"
+          ></v-text-field>
+          <v-text-field
+            label="Password"
+            type="password"
+            v-model="password"
+          ></v-text-field>
           <br>
-          <div class="pl-4 pr-4 pt-2 pb-2">
-            <v-text-field
-              label="Email"
-              v-model="email"
-            ></v-text-field>
-            <v-text-field
-              label="Password"
-              type="password"
-              v-model="password"
-            ></v-text-field>
-            <br>
-            <div
-              class="error"
-              v-html="error" />
-            <br>
-            <v-btn
-              color="green darken-1"
-              dark
-              @click="register"
-              >Register
-            </v-btn>
-          </div>
-        </v-card>
+          <div
+            class="error"
+            v-html="error" />
+          <br>
+          <v-btn
+            color="green darken-1"
+            dark
+            @click="register"
+            >Register
+          </v-btn>
+        </panel>
       </v-col>
     </v-row>
   </v-container>
@@ -37,6 +31,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
 export default {
   data () {
     return {
@@ -58,6 +53,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>

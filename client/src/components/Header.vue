@@ -9,12 +9,14 @@
         </span>
       </v-toolbar-title>
 
-      <!-- TODO: Implement me -->
-      <!-- <v-toolbar-items>
-        <v-btn color="green darken-1" dark elevation>
+      <v-toolbar-items>
+        <v-btn
+          color="green darken-1"
+          elevation
+          @click="navigateTo({name: 'songs'})">
           Search
         </v-btn>
-      </v-toolbar-items> -->
+      </v-toolbar-items>
 
       <v-spacer></v-spacer>
 
@@ -36,6 +38,14 @@
             Sign Up
           <!-- </router-link> -->
         </v-btn>
+
+        <v-btn
+          v-if="$store.state.isUserLoggedIn"
+          color="green darken-1"
+          elevation
+          @click="logout">
+          Log Out
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
   </v-card>
@@ -46,6 +56,13 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'root'
+      })
     }
   }
 }
@@ -56,5 +73,7 @@ export default {
 }
 .home:hover {
   color: #43A047;
+  text-emphasis: inherit
+  ;
 }
 </style>
