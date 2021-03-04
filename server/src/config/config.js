@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   port: process.env.PORT || 8081,
   db: {
@@ -10,7 +12,7 @@ module.exports = {
         max: 10
       },
       host: process.env.HOST || 'localhost',
-      storage: './chordguitar.sqlite'
+      storage: path.resolve(__dirname, '../../chordguitar.sqlite')
     }
   },
   authentication: {

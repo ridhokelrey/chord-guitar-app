@@ -9,6 +9,5 @@ module.exports = (sequelize, DataTypes) => {
     lyrics: DataTypes.TEXT,
     chord: DataTypes.TEXT
   });
-
   return Song;
 }

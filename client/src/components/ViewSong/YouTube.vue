@@ -3,20 +3,17 @@
     <youtube
       :video-id="youtubeId"
       :width="500"
-      :height="255">
+      :height="255"
+      ref="youtube">
     </youtube>
   </panel>
 </template>
 
 <script>
-import Panel from '../Panel'
 export default {
   props: [
     'youtubeId'
-  ],
-  components: {
-    Panel
-  }
+  ]
 }
 </script>
 

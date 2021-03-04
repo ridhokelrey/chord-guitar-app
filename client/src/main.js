@@ -9,11 +9,14 @@ import { sync } from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import VueYoutube from 'vue-youtube'
+import Panel from '@/components/globals/Panel'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
 Vue.use(VueYoutube)
+
+Vue.component('panel', Panel)
 
 sync(store, router)
 

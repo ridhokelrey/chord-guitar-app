@@ -2,19 +2,27 @@
   <v-card flat tile>
     <v-toolbar color="green darken-1" dark>
       <v-toolbar-title class="mr-4">
-        <span
+        <router-link
           class="home"
-          @click="navigateTo({name: 'root'})">
-          Chord Guitar
-        </span>
+          :to="{
+            name: 'songs'
+          }"
+          custom
+          v-slot="{navigate}">
+          <span @click="navigate">
+             Chord Guitar
+          </span>
+        </router-link>
       </v-toolbar-title>
 
       <v-toolbar-items>
         <v-btn
           color="green darken-1"
           elevation
-          @click="navigateTo({name: 'songs'})">
-          Search
+          :to="{
+            name: 'songs'
+          }">
+          Song Lists
         </v-btn>
       </v-toolbar-items>
 
@@ -25,7 +33,9 @@
           v-if="!$store.state.isUserLoggedIn"
           color="green darken-1"
           elevation
-          @click="navigateTo({name: 'login'})">
+          :to="{
+            name: 'login'
+          }">
           Login
         </v-btn>
 
@@ -33,10 +43,10 @@
           v-if="!$store.state.isUserLoggedIn"
           color="green darken-1"
           elevation
-          @click="navigateTo({name: 'register'})">
-          <!-- <router-link to="register" class="text-decoration-none white--text"> -->
-            Sign Up
-          <!-- </router-link> -->
+          :to="{
+            name: 'register'
+          }">
+          Sign Up
         </v-btn>
 
         <v-btn
@@ -54,14 +64,11 @@
 <script>
 export default {
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    },
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'root'
+        name: 'songs'
       })
     }
   }

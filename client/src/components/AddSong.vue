@@ -53,7 +53,7 @@
               :rules="rules.required"
               v-model="song.chord"
           ></v-textarea>
-          <div class="danger-alert" v-if="error">
+          <div class="error--text" v-if="error">
             {{error}}
           </div>
           <v-btn
@@ -68,7 +68,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 export default {
   data () {
@@ -109,16 +108,10 @@ export default {
         this.error = error.data.error
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.danger-alert {
-  color: red;
-}
 </style>
